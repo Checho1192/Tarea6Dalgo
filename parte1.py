@@ -94,52 +94,48 @@ def main():
         print("\nSi desea salir presione 4")
         opcion = input("\n\nSeleccione el algoritmo a probar: ")
         archivo = input('\nEscoja el archivo que desea probar: ')
-        if opcion == 1:
+        if opcion == '1':
             m = leerArchivo(archivo)
             start_time = time.time()
             mcm = dijkstra(m)
             end_time = time.time()
             print(f'El tiempo del algoritmo es de {end_time-start_time}')
-            outD = open("dijkstraOutput.txt", 'w')
-            for i in range(len(mcm)):
-                for j in range(len(mcm[i])):
-                    outD.write(str(mcm[i][j])+'\t')
-                outD.write('\n')
-            outD.close()
+            escribirArchivo(mcm, 'dijkstraOutput.txt')
             print(
                 'La matriz de costos minimos para cada par de vertices esta en el archivo dijkstraOutput.txt')
-        elif opcion == 2:
+        elif opcion == '2':
             m = leerArchivo(archivo)
             start_time = time.time()
             mcm = bellmanFord(m)
             end_time = time.time()
             print(f'El tiempo del algoritmo es de {end_time-start_time}')
-            outB = open("bellmanFordOutput.txt", 'w')
-            for i in range(len(mcm)):
-                for j in range(len(mcm[i])):
-                    outB.write(str(mcm[i][j])+'\t')
-                outB.write('\n')
-            outB.close()
+            escribirArchivo(mcm, 'bellmanFordOutput.txt')
             print(
                 'La matriz de costos minimos para cada par de vertices esta en el archivo bellmanFordOutput.txt')
-        elif opcion == 3:
+        elif opcion == '3':
             m = leerArchivo(archivo)
             start_time = time.time()
             mcm = floydWarshall(m)
             end_time = time.time()
             print(f'El tiempo del algoritmo es de {end_time-start_time}')
-            outF = open("floydWarshallOutput.txt", 'w')
-            for i in range(len(mcm)):
-                for j in range(len(mcm[i])):
-                    outF.write(str(mcm[i][j])+'\t')
-                outF.write('\n')
-            outF.close()
+            escribirArchivo(mcm, 'floydWarshallOutput.txt')
             print(
                 'La matriz de costos minimos para cada par de vertices esta en el archivo floydWarshallOutput.txt')
-        elif opcion == 4:
+        elif opcion == '4':
             continuar = False
         else:
             print("Seleccione una opcion valida.")
+
+# Funcion auxiliar para escribir matriz de costos minimos
+
+
+def escribirArchivo(mcm: list, name: str) -> None:
+    out = open(name, 'w')
+    for i in range(len(mcm)):
+        for j in range(len(mcm[i])):
+            out.write(str(mcm[i][j])+'\t')
+        out.write('\n')
+    out.close()
 
 
 # Programa principal
