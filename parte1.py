@@ -3,7 +3,7 @@ import time
 # Lectura del archivo, se almacena en una matriz de adyacencia de numeros enteros
 
 
-def leerArchivo(nombreArchivo):
+def leerArchivo(nombreArchivo: str) -> list:
     with open(nombreArchivo, 'r') as archivo:
         matriz = [[int(num) for num in line.split('\t')] for line in archivo]
     return matriz
@@ -42,7 +42,7 @@ def not_seen_all(seen: list) -> bool:
     return True
 
 
-def min_not_seen(distance, seen):
+def min_not_seen(distance: list, seen: list) -> int:
     index = -1
     minimum = float('inf')
     for i in range(len(distance)):
