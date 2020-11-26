@@ -73,13 +73,38 @@ def bellmanFord(matrix: list) -> list:
 # Algoritmo de Floyd-Warshall para encontrar el camino de costos mínimos.
 
 def floydWarshall(matrix: list) -> list:
-    dist = matrix.copy()
-    for k in range(len(matrix)):
-        for i in range(len(matrix)):
-            for j in range(len(matrix)):
-                if (dist[i][k] + dist[k][j] < dist[i][j]):
-                    dist[i][j] = dist[i][k] + dist[k][j]
+    dist = copyMatrix(matrix)
+    i, j, k, n = 0, 0, 0, len(matrix)
+    while k < n:
+        if k == 0:
+            dist[i][j] = dist[i][j]
+        elif k > 0 and (i != k and j != k):
+            dist[i][j] = min(dist[i][j], dist[i][k]+dist[k][j])
+        if j < n-1:
+            j += 1
+        elif j == n-1 and i < n-1:
+            i += 1
+            j = 0
+        elif j == n-1 and i == n-1:
+            i, j = 0, 0
+            k += 1
     return dist
+
+
+# Copia una matriz en una nueva reemplazando los -1 por infinito
+
+def copyMatrix(matrix: list) -> list:
+    dist = []
+    for i in range(5):
+        r = []
+        for j in range(5):
+            if matrix[i][j] == -1:
+                r.append(float('inf'))
+            else:
+                r.append(matrix[i][j])
+        dist.append(r)
+    return dist
+
 
 # Función Principal
 
