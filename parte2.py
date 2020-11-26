@@ -74,9 +74,9 @@ def main():
             mcm = bfs(m)
             end_time = time.time()
             print(f'El tiempo del algoritmo es de {end_time-start_time}')
-            escribir_archivo(mcm, 'BFS.txt')
+            escribir_archivo(mcm, 'BFSOuput.txt')
             print(
-                'La matriz de costos minimos para cada par de vertices esta en el archivo BFS.txt')
+                'La lista de vertices que conforman componentes conectados esta en el archivo BFSOuput.txt')
             i += 1
         elif opcion.lower() == 'n':
             continuar = False
