@@ -95,9 +95,9 @@ def floydWarshall(matrix: list) -> list:
 
 def copyMatrix(matrix: list) -> list:
     dist = []
-    for i in range(5):
+    for i in range(len(matrix)):
         r = []
-        for j in range(5):
+        for j in range(len(matrix)):
             if matrix[i][j] == -1:
                 r.append(float('inf'))
             else:
