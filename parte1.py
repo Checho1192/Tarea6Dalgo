@@ -109,7 +109,7 @@ def copyMatrix(matrix: list) -> list:
 # Función Principal
 
 
-def main():
+def main() -> None:
     continuar = True
     while continuar:
         print("\n/////////////// Algoritmos de caminos de costos minimos para cualquier par de vertices //////////////")
